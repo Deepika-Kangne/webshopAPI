@@ -1,0 +1,66 @@
+openapi: 3.0.1
+info:
+  title: Sample API
+  description: Optional multiline or single-line description in [CommonMark](http://commonmark.org/help/) or HTML.
+  version: 0.1.9
+servers:
+  - url: http://localhost:3000
+    description: Optional server description, e.g. Main (production) server
+tags:
+- name: "Orders"
+  description: "Everything about your Orders"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+- name: "Products"
+  description: "Everything about your Products"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+paths:
+  /orders:
+    get:
+      tags:
+      - "Orders"
+      summary: Returns a list of orders.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
+  /orders/{orderId}:
+    patch:
+      tags:
+      - "Orders"
+      summary: "Find order by ID"
+      description: "Returns a order"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "orderId"
+        in: "path"
+        description: "ID of order to return"
+        required: true
+      responses:
+        "200":
+          description: "successful operation"
+  /products:
+    get:
+      tags:
+      - "Products"
+      summary: Returns a list of Products.
+      description: Optional extended description in CommonMark or HTML.
+      responses:
+        '200':    # status code
+          description: A JSON array of user names
+          content:
+            application/json:
+              schema: 
+                type: array
+                items: 
+                  type: string
